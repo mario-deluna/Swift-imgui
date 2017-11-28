@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         }
         
         
-        ImGui.initialize(.metal, fontPath: Bundle.main.path(forResource: "SFMono-Regular", ofType: "ttf"))
+        ImGui.initialize(.metal, fontPath: Bundle.main.path(forResource: "SFMono", ofType: "ttf"))
         
         if let vc = ImGui.vc {
             addChildViewController(vc)
