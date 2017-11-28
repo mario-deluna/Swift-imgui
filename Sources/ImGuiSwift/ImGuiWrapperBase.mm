@@ -204,7 +204,7 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
 
 - (void)loadFontFile:(NSString*) path {
     ImGuiIO &io = ImGui::GetIO();
-    io.Fonts->AddFontFromFileTTF(path.UTF8String, 28);
+    io.Fonts->AddFontFromFileTTF(path.UTF8String, 28 * io.DisplayFramebufferScale.x);
 }
 
 - (void)setupImGuiHooks
@@ -358,7 +358,7 @@ void uSynergySetupFunctions( uSynergyContext &ctx );
     ImGuiIO& io = ImGui::GetIO();
     io.DisplaySize = ImVec2( w, h );
     io.DisplayFramebufferScale = ImVec2( scale, scale );
-    io.FontGlobalScale = 1.0 / scale;
+    io.FontGlobalScale = 1.0;
     
 #pragma mark - @TODO: DO I NEED TO Handle this here?
     //	CGRect bounds = CGRectMake( 0, 0, w, h );
