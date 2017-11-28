@@ -53,9 +53,9 @@ class ViewController: UIViewController {
             self.myView.center = center
             
             if imgui.button("rotate me") {
-                UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.9, animations: {
-                    self.myView.transform = self.myView.transform.rotated(by: 540.0 * .pi / 180.0)
-                }).startAnimation()
+//                UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.9, animations: {
+//                    self.myView.transform = self.myView.transform.rotated(by: 540.0 * .pi / 180.0)
+//                }).startAnimation()
             }
             
             self.points.removeAll()
