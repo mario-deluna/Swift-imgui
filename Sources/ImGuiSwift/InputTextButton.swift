@@ -13,9 +13,9 @@ import Foundation
 class TextFieldDelegate : NSObject, UITextFieldDelegate
 {
 	var inputTextButton: InputTextButton!
-	var isBackSpaced = false
-	var isReturn = false
-	var lastChar = ""
+	@objc var isBackSpaced = false
+	@objc var isReturn = false
+	@objc var lastChar = ""
 	
 	override init() {
 		super.init()
@@ -37,7 +37,7 @@ class TextFieldDelegate : NSObject, UITextFieldDelegate
 		return false
 	}
 	
-	func resetInput() {
+	@objc func resetInput() {
 		lastChar = ""
 		isReturn = false
 		isBackSpaced = false

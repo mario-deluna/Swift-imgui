@@ -26,29 +26,29 @@ import MetalKit
 
 public class ImGuiMTKViewController: ViewControllerAlias, ImGuiViewControllerProtocol {
     
-    public var singleWindowMode = true
+    @objc public var singleWindowMode = true
     public var imgui: ImGuiMetal!
     public var drawBlocks: [ImGuiDrawCallback] = []
-    public var backgroundColor = ColorAlias.clear {
+    @objc public var backgroundColor = ColorAlias.clear {
         willSet (newValue){
             newValue.getRed(&glRed, green: &glGreen, blue: &glBlue, alpha: &glAlpha)
             (view as? MTKView)?.clearColor = MTLClearColor(red: Double(glRed), green: Double(glGreen), blue: Double(glBlue), alpha: Double(glAlpha))
         }
     }
     
-    public let isAvailable = true
+    @objc public let isAvailable = true
     
-    var fontPath: String?
+    @objc var fontPath: String?
     
     private var glRed: CGFloat = 1.0
     private var glGreen: CGFloat = 1.0
     private var glBlue: CGFloat = 1.0
     private var glAlpha: CGFloat = 1.0
     
-	var device: MTLDevice!
-	var commandQueue: MTLCommandQueue!
+	@objc var device: MTLDevice!
+	@objc var commandQueue: MTLCommandQueue!
     
-    public convenience init(fontPath: String? = nil) {
+    @objc public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.fontPath = fontPath
     }
@@ -111,9 +111,9 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
             rpd.colorAttachments[0].clearColor = view.clearColor
             let commandBuffer = commandQueue.makeCommandBuffer()
-            let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: rpd)
-			commandEncoder.endEncoding()
-			commandBuffer.commit()
+            let commandEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: rpd)
+			commandEncoder?.endEncoding()
+			commandBuffer?.commit()
             
             #if os(OSX)
             let scale: CGFloat = NSScreen.main()?.backingScaleFactor ?? 1.0
@@ -142,8 +142,8 @@ extension ImGuiMTKViewController: MTKViewDelegate {
             
 			imgui.render()
             let presentationBuffer = commandQueue.makeCommandBuffer()
-            presentationBuffer.present(drawable)
-            presentationBuffer.commit()
+            presentationBuffer?.present(drawable)
+            presentationBuffer?.commit()
         }
     }
 }

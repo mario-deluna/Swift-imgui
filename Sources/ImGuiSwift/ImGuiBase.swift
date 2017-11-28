@@ -27,6 +27,7 @@ import Darwin // FLT_MAX / FLT_MIN
 
 public class ImGuiBase {
     
+    
 	var io: ImGuiIOBridge!
 	var view: ViewAlias!
     var imguiWrapper: ImGuiWrapperBase!
@@ -414,7 +415,7 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func combo<T: Integer>(_ label: String, currentItemIndex: UnsafeMutablePointer<T>, items: [String], heightInItems: Int = -1) -> Bool {
+	public func combo<T: BinaryInteger>(_ label: String, currentItemIndex: UnsafeMutablePointer<T>, items: [String], heightInItems: Int = -1) -> Bool {
 		
 		var _currentItemIndex: Int32
 		if ((currentItemIndex.pointee as? Int) != nil) {
@@ -584,7 +585,7 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func dragInt<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f", itemCount: Int = 1) -> Bool{
+	public func dragInt<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f", itemCount: Int = 1) -> Bool{
 		
 		if itemCount > 4 { return false }
 		
@@ -612,22 +613,22 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func dragInt2<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func dragInt2<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return dragInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 2)
 	}
 	
 	@discardableResult
-	public func dragInt3<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0,  minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func dragInt3<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0,  minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return dragInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 3)
 	}
 	
 	@discardableResult
-	public func dragInt4<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func dragInt4<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return dragInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 4)
 	}
 	
 	@discardableResult
-	public func dragIntRange2<T: Integer>(_ label: String, vCurrentMin: UnsafeMutablePointer<T>, vCurrentMax: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32 = 0, maxV: Int32 = 0, displayFormat: String = "%.3f", displayFormatMax: String? = nil) -> Bool{
+	public func dragIntRange2<T: BinaryInteger>(_ label: String, vCurrentMin: UnsafeMutablePointer<T>, vCurrentMax: UnsafeMutablePointer<T>, vSpeed: Float = 1.0, minV: Int32 = 0, maxV: Int32 = 0, displayFormat: String = "%.3f", displayFormatMax: String? = nil) -> Bool{
 		var _vCurMin: Int32
 		var _vCurMax: Int32
 		if let value = vCurrentMin.pointee as? Int {
@@ -652,7 +653,7 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func inputInt<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, itemCount: Int = 1, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool{
+	public func inputInt<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, itemCount: Int = 1, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool{
 		
 		if itemCount > 4 { return false }
 		
@@ -680,17 +681,17 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func inputInt2<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+	public func inputInt2<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputInt(label, v: v, itemCount: 2, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
 	@discardableResult
-	public func inputInt3<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+	public func inputInt3<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputInt(label, v: v, itemCount: 3, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
 	@discardableResult
-	public func inputInt4<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
+	public func inputInt4<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, step: Int32 = 1, stepFast: Int32 = 100, extraFlags: ImGuiInputTextFlags = ImGuiInputTextFlags(rawValue: 0)) -> Bool {
 		return inputInt(label, v: v, itemCount: 4, step: step, stepFast: stepFast, extraFlags: extraFlags)
 	}
 	
@@ -791,7 +792,7 @@ public class ImGuiBase {
 	}
     
 	@discardableResult
-	public func sliderInt<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f", itemCount: Int = 1) -> Bool{
+	public func sliderInt<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f", itemCount: Int = 1) -> Bool{
 		
 		var _v: [Int32] = []
 		
@@ -817,17 +818,17 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func sliderInt2<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func sliderInt2<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return sliderInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 2)
 	}
 	
 	@discardableResult
-	public func sliderInt3<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func sliderInt3<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return sliderInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 3)
 	}
 	
 	@discardableResult
-	public func sliderInt4<T: Integer>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
+	public func sliderInt4<T: BinaryInteger>(_ label: String, v: UnsafeMutablePointer<T>, minV: Int32, maxV: Int32, displayFormat: String = "%.0f") -> Bool{
 		return sliderInt(label, v: v, minV: minV, maxV: maxV, displayFormat: displayFormat, itemCount: 4)
 	}
 	
@@ -839,7 +840,7 @@ public class ImGuiBase {
 	}
 	
 	@discardableResult
-	public func vSliderInt<T: Integer>(_ label: String, size:CGSize, v: UnsafeMutablePointer<T>, vMin: Int, vMax: Int, displayFormat: String = "%.0f") -> Bool {
+	public func vSliderInt<T: BinaryInteger>(_ label: String, size:CGSize, v: UnsafeMutablePointer<T>, vMin: Int, vMax: Int, displayFormat: String = "%.0f") -> Bool {
 		
 		var _v: Int32
 		if let value = v.pointee as? Int {
@@ -953,8 +954,13 @@ public class ImGuiBase {
 		imguiWrapper.valueColor(prefix, v)
 	}
 	
-	public func beginChild(_ id: String, sizeArg: CGSize = CGSize.zero, border: Bool = false, flags: ImGuiWindowFlags = .noTitleBar ) {
-		imguiWrapper.beginChild(id, sizeArg, border, flags.rawValue)
+	public func beginChild(_ id: String, sizeArg: CGSize = CGSize.zero, border: Bool = false, flags: ImGuiWindowFlags?) {
+        
+        if let unwrapped = flags {
+            imguiWrapper.beginChild(id, sizeArg, border, unwrapped.rawValue)
+        } else {
+            imguiWrapper.beginChild(id, sizeArg, border, ImGuiWindowFlags.noTitleBar.rawValue)
+        }
 	}
 	
 	public func endChild() {

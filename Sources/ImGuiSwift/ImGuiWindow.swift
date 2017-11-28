@@ -24,7 +24,7 @@ import UIKit
 	private let gestureType: GestureType
 	
 	/// By holding on to the ImGuiViewController, we get easy state restoration!
-	public var imguiViewController: ViewControllerAlias! // requires self for init
+	@objc public var imguiViewController: ViewControllerAlias! // requires self for init
 	
 	/// Whether or not the device is shaking. Used in determining when to present the ImGui UI when the device is shaken.
 	private var shaking: Bool = false
@@ -127,7 +127,7 @@ import UIKit
 		}
 	}
 	
-	func dismissImGui(completion: (() -> ())? = nil) {
+	@objc func dismissImGui(completion: (() -> ())? = nil) {
 		imguiViewController.dismiss(animated: true, completion: completion)
 	}
 }
@@ -141,7 +141,7 @@ extension ImGuiWindow: UIViewControllerTransitioningDelegate {
 }
 
 class AdjustableSizePresentationContrller: UIPresentationController {
-    var frame: CGRect = CGRect.zero
+    @objc var frame: CGRect = CGRect.zero
     override var frameOfPresentedViewInContainerView: CGRect {
         return frame
     }

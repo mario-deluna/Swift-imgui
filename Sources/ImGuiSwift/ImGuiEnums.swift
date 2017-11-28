@@ -24,6 +24,7 @@ public enum ImGuiStyleVar
 
 
 public struct ImGuiWindowFlags: OptionSet {
+
 	
 	public let rawValue: Int32
     
@@ -31,7 +32,7 @@ public struct ImGuiWindowFlags: OptionSet {
         self.rawValue = rawValue
     }
 	
-	static let noTitleBar					= ImGuiWindowFlags(rawValue: 1 << 0)		// Disable title-bar
+    static let noTitleBar					= ImGuiWindowFlags(rawValue: 1 << 0)		// Disable title-bar
 	static let noResize						= ImGuiWindowFlags(rawValue: 1 << 1)		// Disable user resizing with the lower-right grip
 	static let noMove						= ImGuiWindowFlags(rawValue: 1 << 2)		// Disable user moving the window
 	static let noScrollbar					= ImGuiWindowFlags(rawValue: 1 << 3)		// Disable scrollbars (window can still scroll with mouse or programatically)

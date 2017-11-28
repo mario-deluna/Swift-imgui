@@ -16,11 +16,11 @@ import GLKit
 public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProtocol {
 
     public var imgui: ImGuiBase!
-    var context: EAGLContext!
+    @objc var context: EAGLContext!
     
     public var drawBlocks: [ImGuiDrawCallback] = []
     
-    public var backgroundColor = UIColor.clear {
+    @objc public var backgroundColor = UIColor.clear {
         willSet (newValue){
             newValue.getRed(&glRed, green: &glGreen, blue: &glBlue, alpha: &glAlpha)
         }
@@ -31,9 +31,9 @@ public class ImGuiGLKViewController: GLKViewController, ImGuiViewControllerProto
     private var glBlue: CGFloat = 1.0
     private var glAlpha: CGFloat = 1.0
     
-    var fontPath: String?
+    @objc var fontPath: String?
     
-    public convenience init(fontPath: String? = nil) {
+    @objc public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.fontPath = fontPath
     }
