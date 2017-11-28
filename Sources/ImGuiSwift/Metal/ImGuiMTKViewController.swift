@@ -3,9 +3,9 @@
 public class ImGuiMTKViewController: ViewControllerAlias {
     var fontName: String?
     public let isAvailable = false
-    public convenience init(fontName: String? = nil) {
+    public convenience init(fontPath: String? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.fontName = fontName
+        self.fontName = fontPath
     }
     #if os(OSX)
     public override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
